@@ -1,6 +1,14 @@
 /*=============== GOOGLE FONTS ===============*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;900&display=swap');
 
+@font-face {
+  font-family: MorfinSans;
+  src: url(/assets/fonts/MorfinSans-Regular.ttf);
+}
+@font-face {
+  font-family: Invole;
+  src: url(/assets/fonts/Involve-Regular.ttf);
+}
 /*=============== VARIABLES CSS ===============*/
 :root {
   --header-height: 3.5rem;
@@ -19,7 +27,7 @@
   
 
   /*========== Font and typography ==========*/
-  --body-font: 'Poppins', sans-serif;
+  --body-font: 'Invole', sans-serif;
   --biggest-font-size: 2rem;
   --h1-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
@@ -325,8 +333,8 @@ button{
 }
 
 .swiper-pagination-bullet{
-  width: 5px;
-  height: 5px;
+  width: 15px;
+  height: 15px;
   background-color: var(--title-color);
   opacity: 1;
 }
@@ -383,7 +391,7 @@ button{
 
 /*=============== CATEGORY ===============*/
 .category__container{
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 1rem 2rem;
 }
 
@@ -396,53 +404,61 @@ button{
   margin-bottom: var(--mb-0-75);
   transition: .3s;
 }
-
-.category__title{
-  margin-bottom: var(--mb-0-25);
+.category__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem 2rem;
 }
 
-.category__data:hover .category__img{
-  transform: translateY(-.5rem);
+.category__data {
+  text-align: center;
+}
+
+.category__card {
+  position: relative;
+  width: 120px;
+  height: 120px; /* Устанавливаем одинаковую высоту для изображений */
+  perspective: 1000px; /* Для создания эффекта 3D */
+}
+
+.category__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Чтобы картинка заполнила блок */
+  backface-visibility: hidden; /* Скрываем заднюю сторону */
+  transition: transform 0.3s ease-in-out;
+}
+
+.category__img-back {
+  transform: rotateY(180deg); /* Задняя картинка должна быть перевернута */
+}
+
+.category__card:hover .category__img-front {
+  transform: rotateY(180deg); /* Переднее изображение переворачивается */
+}
+
+.category__card:hover .category__img-back {
+  transform: rotateY(0deg); /* Заднее изображение становится видимым */
 }
 
 /*=============== ABOUT ===============*/
 .about {
-  background-image: url('/responsive-halloween-website-main/assets/img/Specal_project.svg');
-  background-size: cover; /* Изображение будет покрывать весь блок */
-  background-position: center; /* Центрирует изображение */
-  background-repeat: no-repeat; /* Не повторяет изображение */
-  padding: 0; /* Убираем отступы, если они не нужны */
+  background-image: url('/assets/img/Specal_project.svg');
+  background-size: 100% 100%; /* Растягивает изображение по ширине и высоте */
+  background-position: center center; /* Центрирует изображение */
+  background-repeat: no-repeat; /* Изображение не повторяется */
+  padding: 0; /* Убираем отступы */
   color: white;
   position: relative; /* Для позиционирования псевдоэлементов */
-  width: 100%; /* Убедитесь, что ширина 100% */
-}
+  width: 100%; /* Ширина блока 100% */
+  height: 100vh; /* Высота блока равна 100% от высоты экрана */
 
-.about::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50%; /* Половина высоты блока */
-  background: linear-gradient(90deg, hsl(0, 0%, 0%) 0%, hsl(275, 89%, 7%) 100%); /* Градиент сверху */
-  opacity: 0.7; /* Полупрозрачный эффект */
-  z-index: 1; /* Под текстом */
-}
-
-.about::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%; /* Половина высоты блока */
-  background: linear-gradient(90deg, hsl(0, 0%, 0%) 0%, hsl(275, 89%, 7%) 100%); /* Градиент снизу */
-  opacity: 0.7; /* Полупрозрачный эффект */
-  z-index: 1; /* Под текстом */
 }
 
 .about__data {
-  position: relative; /* Чтобы текст был поверх псевдоэлементов */
   z-index: 2; /* Текст будет поверх фона */
 }
 /*=============== TRICK OR TREAT ===============*/

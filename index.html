@@ -1,193 +1,304 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-        <!--=============== FAVICON ===============-->
-        <link rel="shortcut icon" href="assets/img/man-with-headphones-pointing-vinyl (1).png" type="image/x-icon">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--=============== BOXICONS ===============-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="assets/img/man-with-headphones-pointing-vinyl (1).png" type="image/x-icon">
 
-        <!--=============== SWIPER CSS ===============--> 
-        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!--=============== BOXICONS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-        <!--=============== CSS ===============--> 
-        <link rel="stylesheet" href="assets/css/styles.css">
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
 
-        <title>Концертная точка</title>
-    </head>
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: rgba(0, 0, 0, 1.0);
+            margin: 5% auto;
+            padding: 40px;
+            border: none;
+            width: 80%;
+            max-width: 800px;
+            min-height: 300px;
+            border-radius: 20px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-images {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .modal-images img {
+            width: 30%;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .modal-images img {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+
+    <title>Концертная точка</title>
+</head>
+
+<body>
+
+
     <body>
         <!--==================== HEADER ====================-->
         <header class="header" id="header">
             <nav class="nav container">
-                <a href="#" class="nav__logo">
-                    <!-- <img src="assets/img/logo.png" alt="" class="nav__logo-img"> -->
-                    <h3>Концертная точка</h3>
-                </a>
+
+                <img class="nav__logo" src="assets/img/logo.png" alt="" class="home__img" style="max-width: 30%;  
+                height: auto; ">
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
-                        <li class="nav__item">
-                            <a href="#home" class="nav__link active-link">Главная</a>
-                        </li>
-
-                        <li class="nav__item">
-                            <a href="#about" class="nav__link">О нас</a>
-                        </li>
-
-                        <li class="nav__item">
-                            <a href="#trick" class="nav__link">Наша концепция</a>
-                        </li>
-
-                        <li class="nav__item">
-                            <a href="#new" class="nav__link">Контакты</a>
-                        </li>
+                        <li class="nav__item"><a href="#home" class="nav__link active-link">Главная</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">О нас</a></li>
+                        <li class="nav__item"><a href="#cat" class="nav__link">Наша концепция</a></li>
+                        <li class="nav__item"><a href="#contacts" class="nav__link">Контакты</a></li>
                     </ul>
-
-                    <div class="nav__close" id="nav-close">
-                        <i class='bx bx-x'></i>
-                    </div>
-
-                    <!-- <img src="assets/img/nav-img.png" alt="" class="nav__img"> -->
+                    <div class="nav__close" id="nav-close"><i class='bx bx-x'></i></div>
                 </div>
-
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-grid-alt'></i>
-                </div>
-
+                <div class="nav__toggle" id="nav-toggle"><i class='bx bx-grid-alt'></i></div>
             </nav>
         </header>
 
         <main class="main">
+            <section class="section about2">
+                <div class="about__container container grid">
+                    <div class="about__data">
+                        <h1 class="home__title" style="font-family: 'MorfinSans'; font-size: clamp(3rem, 10vw, 6rem);">
+                            МУЛЬТИВСЕЛЕННАЯ <br> МУЗЫКИ
+                        </h1>
+
+                    </div>
+                </div>
+            </section>
             <!--==================== HOME ====================-->
+
             <section class="home container" id="home">
                 <div class="swiper home-swiper">
                     <div class="swiper-wrapper">
                         <!-- HOME SLIDER 1 -->
-                        <section class="swiper-slide">
+                        <section class="swiper-slide" onclick="openModal('modal1')">
                             <div class="home__content grid">
                                 <div class="home__group">
-                                    <img src="assets/img/man-with-headphones-pointing-vinyl (1).png" alt="" class="home__img">
+                                    <img src="assets/img/pionist.png" alt="" class="home__img">
                                     <div class="home__indicator"></div>
-    
                                     <div class="home__details-img">
                                         <h4 class="home__details-title">Музыкант</h4>
                                         <span class="home__details-subtitle">Вася Пупкин</span>
                                     </div>
                                 </div>
-    
                                 <div class="home__data">
-                                    <h3 class="home__subtitle">от  2500 р.</h3>
-                                    <h1 class="home__title">Камерный концерт <br> 19 ноября<br> 19:00</h1>
-                                    <p class="home__description"> Будет что-то, будет красиво!
-                                    </p>
-
-                                    <div class="home__buttons">
-                                        <!-- <a href="#" class="button">Кнопка</a>
-                                        <a href="#" class="button--link button--flex">Переход <i class='bx bx-right-arrow-alt button__icon'></i></a> -->
-                                    </div>
+                                    <h3 class="home__subtitle">от 2500 р.</h3>
+                                    <h1 class="home__title" style="font-family: 'MorfinSans';">Камерный концерт <br> 19
+                                        ноября<br> 19:00</h1>
+                                    <p class="home__description">Будет что-то! Будет красиво!</p>
                                 </div>
                             </div>
                         </section>
 
                         <!-- HOME SLIDER 2 -->
-                        <section class="swiper-slide">
+                        <section class="swiper-slide" onclick="openModal('modal2')">
                             <div class="home__content grid">
                                 <div class="home__group">
-                                    <img src="assets/img/man-with-headphones-pointing-vinyl (1).png" alt="" class="home__img">
+                                    <img src="assets/img/pionist.png" alt="" class="home__img">
                                     <div class="home__indicator"></div>
-    
                                     <div class="home__details-img">
                                         <h4 class="home__details-title">Музыкант</h4>
                                         <span class="home__details-subtitle">Иван Иванович</span>
                                     </div>
                                 </div>
-    
                                 <div class="home__data">
-                                    <h3 class="home__subtitle">от  1500 р.</h3>
-                                    <h1 class="home__title">Камерный концерт <br> 19 ноября<br> 19:00</h1>
-                                    <p class="home__description"> Будет что-то, будет красиво!
-                                    </p>
-
-                                    <div class="home__buttons">
-                                        <!-- <a href="#" class="button">Кнопка</a>
-                                        <a href="#" class="button--link button--flex">Переход <i class='bx bx-right-arrow-alt button__icon'></i></a> -->
-                                    </div>
+                                    <h3 class="home__subtitle">от 1500 р.</h3>
+                                    <h1 class="home__title" style="font-family: 'MorfinSans';">Камерный концерт <br> 19
+                                        ноября<br> 19:00</h1>
+                                    <p class="home__description">Будет что-то! Будет красиво!</p>
                                 </div>
                             </div>
                         </section>
 
                         <!-- HOME SLIDER 3 -->
-                        <section class="swiper-slide">
+                        <section class="swiper-slide" onclick="openModal('modal3')">
                             <div class="home__content grid">
                                 <div class="home__group">
-                                    <img src="assets/img/man-with-headphones-pointing-vinyl (1).png" alt="" class="home__img">
+                                    <img src="assets/img/pionist.png" alt="" class="home__img">
                                     <div class="home__indicator"></div>
-    
                                     <div class="home__details-img">
                                         <h4 class="home__details-title">Музыкант</h4>
                                         <span class="home__details-subtitle">Иван Иванович</span>
                                     </div>
                                 </div>
-    
                                 <div class="home__data">
-                                    <h3 class="home__subtitle">от  1500 р.</h3>
-                                    <h1 class="home__title">Камерный концерт <br> 19 ноября<br> 19:00</h1>
-                                    <p class="home__description"> Будет что-то, будет красиво!
-                                    </p>
-
-                                    <div class="home__buttons">
-                                        <!-- <a href="#" class="button">Кнопка</a>
-                                        <a href="#" class="button--link button--flex">Переход <i class='bx bx-right-arrow-alt button__icon'></i></a> -->
-                                    </div>
+                                    <h3 class="home__subtitle">от 1500 р.</h3>
+                                    <h1 class="home__title" style="font-family: 'MorfinSans';">Камерный концерт <br> 19
+                                        ноября<br> 19:00</h1>
+                                    <p class="home__description">Будет что-то! Будет красиво!</p>
                                 </div>
                             </div>
                         </section>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
-            
-            <!--==================== CATEGORY ====================-->
-            <section class="section category">
-                <h2 class="section__title">Наша концепция</h2>
+            </section>
+
+            <!--==================== MODAL WINDOWS ====================-->
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal1')">&times;</span>
+                    <h2>Камерный концерт - Вася Пупкин</h2>
+                    <br>
+                    <div class="modal-images">
+                        <img src="assets/img/Group 17.png" alt="Image 1">
+                        <img src="assets/img/Group 18.png" alt="Image 2">
+                        <img src="assets/img/Mask group.png" alt="Image 3">
+                    </div>
+                    <br>
+                    <p>Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка.</p>
+                </div>
+            </div>
+
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal2')">&times;</span>
+                    <h2>Камерный концерт - Иван Иванович 1</h2>
+                    <br>
+                    <div class="modal-images">
+                        <img src="assets/img/Group 17.png" alt="Image 1">
+                        <img src="assets/img/Group 18.png" alt="Image 2">
+                        <img src="assets/img/Mask group.png" alt="Image 3">
+                    </div>
+                    <br>
+                    <p>Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка.</p>
+                </div>
+            </div>
+
+            <div id="modal3" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal3')">&times;</span>
+                    <h2>Камерный концерт - Иван Иванович 2</h2>
+                    <br>
+                    <div class="modal-images">
+                        <img src="assets/img/Group 17.png" alt="Image 1">
+                        <img src="assets/img/Group 18.png" alt="Image 2">
+                        <img src="assets/img/Mask group.png" alt="Image 3">
+                    </div>
+                    <br>
+                    <p>Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка. Подробное описание концерта, артисты, площадка.
+                        Подробное описание концерта, артисты, площадка.</p>
+                </div>
+            </div>
+        </main>
+
+        <br>
+        <br>
+        <!--==================== ABOUT ====================-->
+        <section class="section about" id="about">
+            <div class="about__container container grid">
+                <div class="about__data">
+                    <h2>
+                        Специальный проект от репетитория <br> Классическая точка.
+                    </h2>
+                    <p class="about__description">
+                        Откройте для себя классическую музыку на камерных концертах
+                    </p>
+                    <!-- <a href="#" class="button">Кнопка</a> -->
+                </div>
+            </div>
+        </section>
+
+
+        <!--==================== CATEGORY ====================-->
+        <section class="section category" id="cat">
+            <h2 class="section__title" style="font-family: 'MorfinSans'; font-size: clamp(3rem, 10vw, 6rem);">Наша
+                концепция</h2>
 
                 <div class="category__container container grid">
                     <div class="category__data">
-                        <img src="assets/img/close.svg" alt="" class="category__img">
-                        <h3 class="category__title"></h3>
-                        <p class="category__description">Сделать класическую музыку ближе и понятнее для каждого</p>
+                      <div class="category__card">
+                        <img src="assets/img/close.svg" alt="Image 1" class="category__img category__img-front">
+                        <img src="assets/img/close_hover.png" alt="Image 2" class="category__img category__img-back">
+                      </div>
                     </div>
-
+                  
                     <div class="category__data">
-                        <img src="assets/img/camer.svg" alt="" class="category__img">
-                        <h3 class="category__title"></h3>
-                        <p class="category__description">Живые камерные выстуаления, где акцентируется внимание на том, как правильновоспринимать и наслаждаться сложными произведениями</p>
+                      <div class="category__card">
+                        <img src="assets/img/camer.svg" alt="Image 1" class="category__img category__img-front">
+                        <img src="assets/img/camera_close.png" alt="Image 2" class="category__img category__img-back">
+                      </div>
                     </div>
-
+                  
                     <div class="category__data">
-                        <img src="assets/img/world.svg" alt="" class="category__img">
-                        <h3 class="category__title"></h3>
-                        <p class="category__description">Каждое событие не просто концерт, а целая вселенная, куда хочется возвращаться вновь и вновь</p>
+                      <div class="category__card">
+                        <img src="assets/img/world.svg" alt="Image 1" class="category__img category__img-front">
+                        <img src="assets/img/world_hover.png" alt="Image 2" class="category__img category__img-back">
+                      </div>
                     </div>
-                </div>
-            </section>
-
-            
-           <!--==================== ABOUT ====================-->
-            <section class="section about" id="about">
-                <div class="about__container container grid">
-                    <div class="about__data">
-                        <h2 class="section__title about__title">Специальный проект от репетитория <br> Классическая точка.</h2>
-                        <p class="about__description">Откройте для себя классическую музыку на камерных концертах</p>
-                        <!-- <a href="#" class="button">Кнопка</a> -->
-                    </div>
-                </div>
-            </section>
+                  </div>
+        </section>
 
 
-            <!-- ==================== TRICK OR TREAT ====================
+
+
+
+        <!-- ==================== TRICK OR TREAT ====================
             <section class="section trick" id="trick">
                 <h2 class="section__title">Trick Or Treat</h2>
 
@@ -255,7 +366,7 @@
             </section>
             
             ==================== DISCOUNT ====================-->
-            <!-- <section class="section discount">
+        <!-- <section class="section discount">
                 <div class="discount__container container grid">
                     <div class="discount__data">
                         <h2 class="discount__title">50% Discount <br> On New Products</h2>
@@ -266,8 +377,8 @@
                 </div>
             </section> -->
 
-            <!--==================== NEW ARRIVALS ====================-->
-            <!-- <section class="section new" id="new">
+        <!--==================== NEW ARRIVALS ====================-->
+        <!-- <section class="section new" id="new">
                 <h2 class="section__title">New Arrivals</h2>
 
                 <div class="new__container container">
@@ -373,8 +484,8 @@
                 </div>
             </section> -->
 
-            <!--==================== OUR NEWSLETTER ====================-->
-            <!-- <section class="section newsletter">
+        <!--==================== OUR NEWSLETTER ====================-->
+        <!-- <section class="section newsletter">
                 <div class="newsletter__container container">
                     <h2 class="section__title">Our Newsletter</h2>
                     <p class="newsletter__description">
@@ -392,24 +503,24 @@
         </main>
 
         <!--==================== FOOTER ====================-->
-            <footer class="footer section">
-                <div class="footer__container container grid">
-                    <div class="footer__content">
-                        <a href="#" class="footer__logo">
-                            <!-- <img src="assets/img/logo.png" alt="" class="footer__logo-img"> -->
-                            
-                        </a>
-                        <h1>Контакты</h1>
-                        <p class="footer__description">+7 (991) 037-96-10</p>
-                        
-                        <div class="footer__social">
-                            <a href="https://vk.com/" target="_blank" class="footer__social-link">
-                                <i class='bx bxl-facebook'></i>
-                            </a>
-                        </div>
-                    </div>
+        <footer class="footer section" id="contacts">
+            <div class="footer__container container grid">
+                <div class="footer__content">
+                    <a href="#" class="footer__logo">
+                        <!-- <img src="assets/img/logo.png" alt="" class="footer__logo-img"> -->
 
-                    <!-- <div class="footer__content">
+                    </a>
+                    <h1 style="font-family: 'MorfinSans';">Контакты</h1>
+                    <p class="footer__description">+7 (991) 037-96-10</p>
+
+                    <div class="footer__social">
+                        <a href="https://vk.com/" target="_blank" class="footer__social-link">
+                            <i class='bx bxl-facebook'></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- <div class="footer__content">
                         <h3 class="footer__title">About</h3>
                         
                         <ul class="footer__links">
@@ -458,24 +569,42 @@
                     </div>
                 </div> -->
 
-            
-<!-- 
+
+                <!-- 
                 <img src="assets/img/footer1-img.png" alt="" class="footer__img-one">
                 <img src="assets/img/footer2-img.png" alt="" class="footer__img-two"> -->
-            </footer>
+        </footer>
 
-            <!--=============== SCROLL UP ===============-->
-            <a href="#" class="scrollup" id="scroll-up">
-                <i class='bx bx-up-arrow-alt scrollup__icon'></i>
-            </a>
-        
+        <!--=============== SCROLL UP ===============-->
+        <a href="#" class="scrollup" id="scroll-up">
+            <i class='bx bx-up-arrow-alt scrollup__icon'></i>
+        </a>
+
         <!--=============== SCROLL REVEAL ===============-->
         <script src="assets/js/scrollreveal.min.js"></script>
 
         <!--=============== SWIPER JS ===============-->
         <script src="assets/js/swiper-bundle.min.js"></script>
-        
+
         <!--=============== MAIN JS ===============-->
         <script src="assets/js/main.js"></script>
+
+        <script>
+            function openModal(modalId) {
+                document.getElementById(modalId).style.display = "block";
+            }
+
+            function closeModal(modalId) {
+                document.getElementById(modalId).style.display = "none";
+            }
+
+            // Закрытие модального окна при клике вне его
+            window.onclick = function (event) {
+                if (event.target.classList.contains('modal')) {
+                    closeModal(event.target.id);
+                }
+            };
+        </script>
     </body>
+
 </html>
